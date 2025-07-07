@@ -33,6 +33,13 @@ export const register: (req: Request, res: Response) => Promise<void> = async (
   req: Request,
   res: Response
 ) => {
+  /**
+   
+  #swagger.tags=["Auth"]
+  
+   
+   */
+
   try {
     const { fullName, username, email, password, confirmPassword } =
       req.body as unknown as TRegister;
@@ -70,7 +77,7 @@ export const login: (req: Request, res: Response) => Promise<void> = async (
   res: Response
 ) => {
   /**
-   
+   #swagger.tags=["Auth"]
   #swagger.requestBody = {
     required: true,
     schema: {$ref: "#/components/schemas/LoginRequest"}
@@ -130,7 +137,7 @@ export const login: (req: Request, res: Response) => Promise<void> = async (
 
 export const me = async (req: IReqUser, res: Response) => {
   /**
-     
+     #swagger.tags=["Auth"]
     #swagger.security = [{
     "bearerAuth": []
     }]
