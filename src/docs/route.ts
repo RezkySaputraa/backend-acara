@@ -7,8 +7,12 @@ export default function docs(app: Express) {
     "/api-docs",
     swaggerUi.serve,
     swaggerUi.setup(swaggerOutput, {
-      customCssUrl: "/swagger-ui-custom.css",
-      customJs: ["/swagger-ui-bundle.js", "/swagger-ui-standalone-preset.js"],
+      customCssUrl:
+        "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.18.3/swagger-ui.css",
+      customJs: [
+        "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.18.3/swagger-ui-bundle.js",
+        "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.18.3/swagger-ui-standalone-preset.js",
+      ],
     })
   );
 }
