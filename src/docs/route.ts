@@ -7,7 +7,7 @@ export default function docs(app: Express) {
     "/api-docs",
     swaggerUi.serve,
     swaggerUi.setup(swaggerOutput, {
-      customCss: "/swagger-ui.css",
+      customCssUrl: "/swagger-ui.css",
     })
   );
 }

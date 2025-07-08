@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import db from "./utils/database";
 import docs from "./docs/route";
 import cors from "cors";
+import path from "path";
 
 async function init() {
   try {
@@ -13,7 +14,10 @@ async function init() {
     const app = express();
     app.use(cors());
     app.use(bodyParser.json());
+
     const PORT = 3000;
+
+    app.use(express.static(path.join(__dirname, "../public")));
 
     app.get("/", (req, res) => {
       res.status(200).json({
@@ -23,7 +27,7 @@ async function init() {
     });
 
     app.use("/api", router);
-    docs(app)
+    docs(app);
 
     app.listen(PORT, () => {
       console.log(`Server running on port http://localhost:${PORT}`);
