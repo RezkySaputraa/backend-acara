@@ -23,7 +23,23 @@ const registerValidateSchema = Yup.object({
   fullName: Yup.string().required(),
   username: Yup.string().required(),
   email: Yup.string().required(),
-  password: Yup.string().required(),
+  password: Yup.string()
+    .required()
+    .min(6, "Password minimal 6 karakter")
+    .test(
+      "atleast-one-uppercase-letter",
+      "Contains atleast one uppercase letter",
+      (value) => {
+        if (!value) return false;
+        const regex = /^(?=.*[A-Z])/;
+        return regex.test(value);
+      }
+    )
+    .test("atleast-one-number", "Contains atleast one number", (value) => {
+      if (!value) return false;
+      const regex = /^(?=.*\d)/;
+      return regex.test(value);
+    }),
   confirmPassword: Yup.string()
     .required()
     .oneOf([Yup.ref("password"), ""], "Password not match"),
@@ -36,7 +52,10 @@ export const register: (req: Request, res: Response) => Promise<void> = async (
   /**
    
   #swagger.tags=["Auth"]
-  
+    #swagger.requestBody = {
+    required: true,
+    schema: {$ref: "#/components/schemas/RegisterRequest"}
+  }
    
    */
 
@@ -97,6 +116,7 @@ export const login: (req: Request, res: Response) => Promise<void> = async (
           username: identifier,
         },
       ],
+      isActive: true,
     });
 
     if (!userByIdentifier) {
@@ -151,6 +171,45 @@ export const me = async (req: IReqUser, res: Response) => {
     res.status(200).json({
       message: "Success get user profile",
       data: result,
+    });
+  } catch (error) {
+    const err = error as unknown as Error;
+    res.status(400).json({
+      message: err.message,
+      data: null,
+    });
+  }
+};
+
+export const activation = async (req: Request, res: Response) => {
+  /**
+   
+  #swagger.tags= ["Auth"]
+  #swagger.requestBody = {
+    required: true,
+    schema: {$ref: "#/components/schemas/ActivationRequest"}
+  }
+   
+   */
+
+  try {
+    const { code } = req.body as { code: string };
+
+    const user = await UserModel.findOneAndUpdate(
+      {
+        activationCode: code,
+      },
+      {
+        isActive: true,
+      },
+      {
+        new: true,
+      }
+    );
+
+    res.status(200).json({
+      message: "User successfully activated",
+      data: user,
     });
   } catch (error) {
     const err = error as unknown as Error;
