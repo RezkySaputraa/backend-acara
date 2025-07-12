@@ -120,10 +120,11 @@ export const login: (req: Request, res: Response) => Promise<void> = async (
     });
 
     if (!userByIdentifier) {
-      return res.status(404).json({
+      res.status(404).json({
         message: "User not found",
         data: null,
-      }) as unknown as void;
+      });
+      return;
     }
 
     // validasi password
@@ -131,10 +132,11 @@ export const login: (req: Request, res: Response) => Promise<void> = async (
       encrypt(password) === userByIdentifier?.password;
 
     if (!validatePassword) {
-      return res.status(401).json({
+      res.status(401).json({
         message: "Wrong username or password",
         data: null,
-      }) as unknown as void;
+      });
+      return;
     }
 
     const token = generateToken({
