@@ -4,7 +4,8 @@ import * as Yup from "yup";
 import UserModel from "../models/user.model";
 import { encrypt } from "../utils/encryption";
 import { generateToken } from "../utils/jwt";
-import { IReqUser } from "../middlewares/auth.middleware";
+import { IReqUser } from "../utils/interfaces";
+import response from "../utils/response";
 
 type TRegister = {
   fullName: string;
@@ -78,16 +79,9 @@ export const register: (req: Request, res: Response) => Promise<void> = async (
       password,
     });
 
-    res.status(200).json({
-      message: "Success registration",
-      data: result,
-    });
+    response.success(res, result, "Success registration");
   } catch (error) {
-    const err = error as unknown as Error;
-    res.status(400).json({
-      message: err.message,
-      data: null,
-    });
+    response.error(res, error, "Failed registration");
   }
 };
 
@@ -120,11 +114,7 @@ export const login: (req: Request, res: Response) => Promise<void> = async (
     });
 
     if (!userByIdentifier) {
-      res.status(404).json({
-        message: "User not found",
-        data: null,
-      });
-      return;
+      return response.unauthorized(res, "User not found");
     }
 
     // validasi password
@@ -132,11 +122,7 @@ export const login: (req: Request, res: Response) => Promise<void> = async (
       encrypt(password) === userByIdentifier?.password;
 
     if (!validatePassword) {
-      res.status(401).json({
-        message: "Wrong username or password",
-        data: null,
-      });
-      return;
+      return response.unauthorized(res, "User not found");
     }
 
     const token = generateToken({
@@ -144,16 +130,9 @@ export const login: (req: Request, res: Response) => Promise<void> = async (
       role: userByIdentifier.role,
     });
 
-    res.status(200).json({
-      message: "Login Success",
-      data: token,
-    });
+    response.success(res, token, "Login Success");
   } catch (error) {
-    const err = error as unknown as Error;
-    res.status(400).json({
-      message: err.message,
-      data: null,
-    });
+    response.error(res, error, "Login Failed");
   }
 };
 
@@ -170,16 +149,9 @@ export const me = async (req: IReqUser, res: Response) => {
     const user = req.user;
     const result = await UserModel.findById(user?.id);
 
-    res.status(200).json({
-      message: "Success get user profile",
-      data: result,
-    });
+    response.success(res, result, "Success get user profile");
   } catch (error) {
-    const err = error as unknown as Error;
-    res.status(400).json({
-      message: err.message,
-      data: null,
-    });
+    response.error(res, error, "Failed get user profile");
   }
 };
 
@@ -209,15 +181,8 @@ export const activation = async (req: Request, res: Response) => {
       }
     );
 
-    res.status(200).json({
-      message: "User successfully activated",
-      data: user,
-    });
+    response.success(res, user, "Success activation account");
   } catch (error) {
-    const err = error as unknown as Error;
-    res.status(400).json({
-      message: err.message,
-      data: null,
-    });
+    response.error(res, error, "Failed activation account");
   }
 };

@@ -1,33 +1,25 @@
-import { Request, Response, NextFunction } from "express";
-import { getUserData, IUserToken } from "../utils/jwt";
-
-export interface IReqUser extends Request {
-  user?: IUserToken;
-}
+import { Response, NextFunction } from "express";
+import { getUserData } from "../utils/jwt";
+import { IReqUser } from "../utils/interfaces";
+import response from "../utils/response";
 
 export default (req: IReqUser, res: Response, next: NextFunction) => {
   const authorization = req.headers?.authorization;
 
   if (!authorization) {
-    return res
-      .status(400)
-      .json({ message: "Bad Request", data: null }) as unknown as void;
+    return response.unauthorized(res);
   }
 
   const [prefix, token] = authorization.split(" ");
 
   if (!(prefix === "Bearer" && token)) {
-    return res
-      .status(401)
-      .json({ message: "Unauthorized", data: null }) as unknown as void;
+    return response.unauthorized(res);
   }
 
   const user = getUserData(token);
 
   if (!user) {
-    return res
-      .status(401)
-      .json({ message: "Unauthorized", data: null }) as unknown as void;
+    return response.unauthorized(res);
   }
 
   req.user = user;
