@@ -33,7 +33,7 @@ router.post(
   /*
   #swagger.tags = ["Media"]
   #swagger.security = [{
-    "bearerAuth": []
+    "bearerAuth": {}
   }]
 
   #swagger.requestBody = {
@@ -66,7 +66,7 @@ router.post(
   /*
   #swagger.tags = ["Media"]
   #swagger.security = [{
-    "bearerAuth": []
+    "bearerAuth": {}
   }]
 
   #swagger.requestBody = {
@@ -98,7 +98,7 @@ router.delete(
   /*
   #swagger.tags = ["Media"]
   #swagger.security = [{
-    "bearerAuth": []
+    "bearerAuth": {}
   }]
 
   #swagger.requestBody = {
@@ -118,7 +118,7 @@ router.post(
 
   #swagger.tags = ["Category"]
   #swagger.security = [{
-    "bearerAuth": []
+    "bearerAuth": {}
   }]
 
   #swagger.requestBody = {
@@ -152,7 +152,7 @@ router.put(
   /*
   #swagger.tags = ["Category"]
   #swagger.security = [{
-    "bearerAuth": []  
+    "bearerAuth": {}  
   }]
 
   #swagger.requestBody = {
@@ -171,7 +171,7 @@ router.delete(
   /*
   #swagger.tags = ["Category"]
   #swagger.security = [{
-    "bearerAuth": []  
+    "bearerAuth": {}  
   }]
   */
 );
@@ -184,7 +184,7 @@ router.post(
   /*
   #swagger.tags = ["Events"]
   #swagger.security = [{
-    "bearerAuth": []  
+    "bearerAuth": {}  
   }]
   #swagger.requestBody = {
       required: true,
@@ -217,7 +217,7 @@ router.put(
   /*
   #swagger.tags = ["Events"]
   #swagger.security = [{
-    "bearerAuth": []  
+    "bearerAuth": {}  
   }]
 
    #swagger.requestBody = {
@@ -235,7 +235,7 @@ router.delete(
   /*
   #swagger.tags = ["Events"]
   #swagger.security = [{
-    "bearerAuth": []  
+    "bearerAuth": {}  
   }]
   */
 );

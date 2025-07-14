@@ -140,7 +140,7 @@ export const me = async (req: IReqUser, res: Response) => {
   /**
      #swagger.tags=["Auth"]
     #swagger.security = [{
-    "bearerAuth": []
+    "bearerAuth": {}
     }]
      
      */
