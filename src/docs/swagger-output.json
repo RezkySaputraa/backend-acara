@@ -131,7 +131,7 @@
         },
         "security": [
           {
-            "bearerAuth": {}
+            "bearerAuth": []
           }
         ],
         "requestBody": {
@@ -165,7 +165,7 @@
         },
         "security": [
           {
-            "bearerAuth": {}
+            "bearerAuth": []
           }
         ],
         "requestBody": {
@@ -202,7 +202,7 @@
         },
         "security": [
           {
-            "bearerAuth": {}
+            "bearerAuth": []
           }
         ],
         "requestBody": {
@@ -235,7 +235,7 @@
         },
         "security": [
           {
-            "bearerAuth": {}
+            "bearerAuth": []
           }
         ],
         "requestBody": {
@@ -333,7 +333,7 @@
         },
         "security": [
           {
-            "bearerAuth": {}
+            "bearerAuth": []
           }
         ],
         "requestBody": {
@@ -374,7 +374,7 @@
         },
         "security": [
           {
-            "bearerAuth": {}
+            "bearerAuth": []
           }
         ]
       }
@@ -392,7 +392,7 @@
         },
         "security": [
           {
-            "bearerAuth": {}
+            "bearerAuth": []
           }
         ],
         "requestBody": {
@@ -490,7 +490,7 @@
         },
         "security": [
           {
-            "bearerAuth": {}
+            "bearerAuth": []
           }
         ],
         "requestBody": {
@@ -531,7 +531,7 @@
         },
         "security": [
           {
-            "bearerAuth": {}
+            "bearerAuth": []
           }
         ]
       }
@@ -802,8 +802,8 @@
             "type": "object",
             "properties": {
               "region": {
-                "type": "string",
-                "example": "region id"
+                "type": "number",
+                "example": 0
               },
               "coordinates": {
                 "type": "array",
