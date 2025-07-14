@@ -51,7 +51,7 @@ const doc = {
         startDate: "yyyy-mm-dd hh:mm:ss",
         endDate: "yyyy-mm-dd hh:mm:ss",
         location: {
-          region: "region id",
+          region: 0,
           coordinates: [0, 0],
         },
         isOnline: false,
