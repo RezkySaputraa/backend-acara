@@ -53,9 +53,11 @@ const doc = {
         location: {
           region: 0,
           coordinates: [0, 0],
+          address: "",
         },
         isOnline: false,
-        isFeatured: true,
+        isFeatured: false,
+        isPublish: false,
       },
       RemoveMediaRequest: {
         fileUrl: "",

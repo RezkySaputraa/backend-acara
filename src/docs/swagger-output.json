@@ -814,6 +814,10 @@
                 "items": {
                   "type": "number"
                 }
+              },
+              "address": {
+                "type": "string",
+                "example": ""
               }
             }
           },
@@ -823,7 +827,11 @@
           },
           "isFeatured": {
             "type": "boolean",
-            "example": true
+            "example": false
+          },
+          "isPublish": {
+            "type": "boolean",
+            "example": false
           }
         },
         "xml": {
