@@ -99,9 +99,7 @@ const EventSchema = new Schema<Event>(
   {
     timestamps: true,
   }
-);
-
-EventSchema.index({ name: "text", description: "text" });
+).index({ name: "text" });
 
 EventSchema.pre("save", function () {
   if (!this.slug) {
