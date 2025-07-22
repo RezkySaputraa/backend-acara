@@ -55,6 +55,11 @@ export default {
     try {
       const { id } = req.params;
       const result = await EventModel.findById(id);
+
+      if (!result) {
+        return response.notfound(res, "Failed to find one an event");
+      }
+
       response.success(res, result, "Success find one event");
     } catch (error) {
       response.error(res, error, "Failed find one event");

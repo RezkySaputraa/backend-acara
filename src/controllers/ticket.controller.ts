@@ -9,9 +9,9 @@ export default {
     try {
       await ticketDAO.validate(req.body);
       const result = await TicketModel.create(req.body);
-      response.success(res, result, "Success to create ticket");
+      response.success(res, result, "Success to create a ticket");
     } catch (error) {
-      response.error(res, error, "Failed to create ticket");
+      response.error(res, error, "Failed to create a ticket");
     }
   },
   async findAll(req: IReqUser, res: Response) {
@@ -53,52 +53,56 @@ export default {
         "Success find all tickets"
       );
     } catch (error) {
-      response.error(res, error, "Failed to find all");
+      response.error(res, error, "Failed to find all tickets");
     }
   },
   async findOne(req: IReqUser, res: Response) {
     try {
       const { id } = req.params;
       const result = await TicketModel.findById(id);
-      response.success(res, result, "Success find one ticket");
+
+      if (!result) {
+        return response.notfound(res, "Failed to find one ticket");
+      }
+
+      response.success(res, result, "Success find one a ticket");
     } catch (error) {
-      response.error(res, error, "Failed to find one");
+      response.error(res, error, "Failed to find one a ticket");
     }
   },
   async update(req: IReqUser, res: Response) {
     try {
       const { id } = req.params;
       const result = await TicketModel.findByIdAndUpdate(id, req.body, {
-        new: true
+        new: true,
       });
-      response.success(res, result, "Success update one ticket");
+      response.success(res, result, "Success update one a ticket");
     } catch (error) {
-      response.error(res, error, "Failed to update");
+      response.error(res, error, "Failed to update a ticket");
     }
   },
   async remove(req: IReqUser, res: Response) {
     try {
       const { id } = req.params;
       const result = await TicketModel.findByIdAndDelete(id, {
-        new: true
+        new: true,
       });
       response.success(res, result, "Success remove a ticket");
     } catch (error) {
-      response.error(res, error, "Failed to remove");
+      response.error(res, error, "Failed to remove a ticket");
     }
   },
   async findAllByEvent(req: IReqUser, res: Response) {
     try {
-      const {eventId} = req.params;
+      const { eventId } = req.params;
 
       if (!isValidObjectId(eventId)) {
         return response.error(res, null, "tickets not found");
       }
 
-      const result = await TicketModel.find({events: eventId}).exec()
+      const result = await TicketModel.find({ events: eventId }).exec();
 
       response.success(res, result, "Success to find all ticket by event");
-
     } catch (error) {
       response.error(res, error, "Failed to find all ticket by event");
     }
