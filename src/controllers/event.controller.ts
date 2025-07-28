@@ -1,8 +1,9 @@
 import { Response } from "express";
-import {  IReqUser } from "../utils/interfaces.js";
+import { IReqUser } from "../utils/interfaces.js";
 import response from "../utils/response.js";
 import EventModel, { eventDTO, TypeEvent } from "../models/event.model.js";
 import { FilterQuery, isValidObjectId } from "mongoose";
+import uploader from "../utils/uploader.js";
 
 export default {
   async create(req: IReqUser, res: Response) {
@@ -17,21 +18,27 @@ export default {
   },
   async findAll(req: IReqUser, res: Response) {
     try {
-
       const buildQuery = (filter: any) => {
-        let query : FilterQuery<TypeEvent> = {};
-        
+        let query: FilterQuery<TypeEvent> = {};
+
         if (filter.search) query.$text = { $search: filter.search };
         if (filter.category) query.category = filter.category;
         if (filter.isOnline) query.isOnline = filter.isOnline;
         if (filter.isFeatured) query.isFeatured = filter.isFeatured;
         if (filter.isPublish) query.isPublish = filter.isPublish;
-        
-        return query
-      }
 
-      const { limit = 10, page = 1, search, category, isOnline, isFeatured, isPublish } =
-        req.query;
+        return query;
+      };
+
+      const {
+        limit = 10,
+        page = 1,
+        search,
+        category,
+        isOnline,
+        isFeatured,
+        isPublish,
+      } = req.query;
 
       const query = buildQuery({
         search,
@@ -89,6 +96,11 @@ export default {
       const result = await EventModel.findByIdAndUpdate(id, req.body, {
         new: true,
       });
+
+      if (!result) {
+        return response.notfound(res, "event not found");
+      }
+
       response.success(res, result, "Success update an event");
     } catch (error) {
       response.error(res, error, "Failed update an event");
@@ -105,6 +117,13 @@ export default {
       const result = await EventModel.findByIdAndDelete(id, {
         new: true,
       });
+
+      if (!result) {
+        return response.notfound(res, "event not found");
+      }
+
+      await uploader.remove(result.banner);
+
       response.success(res, result, "Success remove an event");
     } catch (error) {
       response.error(res, error, "Failed remove an event");
@@ -116,6 +135,11 @@ export default {
       const result = await EventModel.findOne({
         slug,
       });
+
+      if (!result) {
+        return response.notfound(res, "event not found");
+      }
+
       response.success(res, result, "Success find one by slug event");
     } catch (error) {
       response.error(res, error, "Failed find one by slug event");

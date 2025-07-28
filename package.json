@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/index.ts",
-    "deve": "nodemon --exec node --loader ts-node/esm src/index.ts",
-    "docs": "ts-node src/docs/swagger.ts"
+    "dev": "nodemon --exec node --loader ts-node/esm src/index.ts",
+    "docs": "node --loader ts-node/esm src/docs/swagger.ts"
   },
   "keywords": [],
   "author": "",
