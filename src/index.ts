@@ -5,8 +5,8 @@ import docs from "./docs/route.js";
 import cors from "cors";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
+import errorMiddleware from "./middlewares/error.middleware.js";
 
-// ✅ Versi ESM-compatible __dirname
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -28,8 +28,10 @@ async function init() {
       });
     });
     app.use("/api", router);
-
     docs(app);
+
+    app.use(errorMiddleware.serverRoute());
+    app.use(errorMiddleware.serverError());
 
     app.listen(PORT, () => {
       console.log(`Server running on port http://localhost:${PORT}`);
