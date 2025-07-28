@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/index.ts",
-    "deve": "node --loader ts-node/esm src/index.ts",
+    "deve": "nodemon --exec node --loader ts-node/esm src/index.ts",
     "docs": "ts-node src/docs/swagger.ts"
   },
   "keywords": [],
