@@ -4,6 +4,8 @@ import {
   login,
   me,
   activation,
+  updateProfile,
+  updatePassword,
 } from "../controllers/auth.controller";
 import authMiddleware from "../middlewares/auth.middleware";
 import aclMiddleware from "../middlewares/acl.middleware";
@@ -19,10 +21,94 @@ import orderController from "../controllers/order.controller";
 
 const router = express.Router();
 
-router.post("/auth/register", register);
-router.post("/auth/login", login);
-router.get("/auth/me", authMiddleware, me);
-router.post("/auth/activation", activation);
+router.post(
+  "/auth/register",
+  register
+  /*
+   
+    #swagger.tags=["Auth"]
+    #swagger.requestBody = {
+      required: true,
+      schema: {$ref: "#/components/schemas/RegisterRequest"}
+    }
+   
+  */
+);
+router.post(
+  "/auth/login",
+  login
+  /*
+    #swagger.tags=["Auth"]
+    #swagger.requestBody = {
+      required: true,
+      schema: {$ref: "#/components/schemas/LoginRequest"}
+    }
+     
+  */
+);
+router.get(
+  "/auth/me",
+  authMiddleware,
+  me
+  /*
+    #swagger.tags=["Auth"]
+    #swagger.security = [{
+      "bearerAuth": {}
+    }]
+       
+  */
+);
+router.post(
+  "/auth/activation",
+  activation
+  /*
+   
+  #swagger.tags= ["Auth"]
+  #swagger.requestBody = {
+    required: true,
+    schema: {$ref: "#/components/schemas/ActivationRequest"}
+  }
+   
+  */
+);
+
+router.put(
+  "/auth/update-profile",
+  [authMiddleware, aclMiddleware([ROLES.MEMBER])],
+  updateProfile
+
+  /*
+   
+  #swagger.tags= ["Auth"]
+  #swagger.security = [{
+  "bearerAuth": {}
+  }]
+  #swagger.requestBody = {
+    required: true,
+    schema: {$ref: "#/components/schemas/UpdateProfileRequest"}
+  }
+   
+  */
+);
+
+router.put(
+  "/auth/update-password",
+  [authMiddleware, aclMiddleware([ROLES.MEMBER])],
+  updatePassword
+
+  /*
+   
+  #swagger.tags= ["Auth"]
+  #swagger.security = [{
+  "bearerAuth": {}
+  }]
+  #swagger.requestBody = {
+    required: true,
+    schema: {$ref: "#/components/schemas/UpdatePasswordRequest"}
+  }
+   
+  */
+);
 
 router.post(
   "/orders",
