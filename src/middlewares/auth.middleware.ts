@@ -1,7 +1,7 @@
 import { Response, NextFunction } from "express";
-import { getUserData } from "../utils/jwt";
-import { IReqUser } from "../utils/interfaces";
-import response from "../utils/response";
+import { getUserData } from "../utils/jwt.js";
+import { IReqUser } from "../utils/interfaces.js";
+import response from "../utils/response.js";
 
 export default (req: IReqUser, res: Response, next: NextFunction) => {
   const authorization = req.headers?.authorization;

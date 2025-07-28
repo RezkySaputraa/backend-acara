@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import response from "../utils/response";
-import RegionModel from "../models/region.model";
+import response from "../utils/response.js";
+import RegionModel from "../models/region.model.js";
 
 export default {
   async findByCity(req: Request, res: Response) {

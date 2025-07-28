@@ -6,9 +6,14 @@ import {
   EMAIL_SMTP_PORT,
   EMAIL_SMTP_HOST,
   EMAIL_SMTP_SERVICE_NAME,
-} from "../env";
+} from "../env.js";
 import ejs from "ejs";
-import path from "path";
+import path, { dirname } from "path";
+import { fileURLToPath } from "url";
+
+// ✅ Versi ESM-compatible __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const transporter = nodemailer.createTransport({
   service: EMAIL_SMTP_SERVICE_NAME,

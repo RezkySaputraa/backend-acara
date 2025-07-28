@@ -1,10 +1,10 @@
 import mongoose, { ObjectId, Schema } from "mongoose";
 import * as Yup from "yup";
-import { EVENT_MODEL_NAME } from "./event.model";
-import { USER_MODEL_NAME } from "./user.model";
-import { TICKET_MODEL_NAME } from "./ticket.model";
-import { getId } from "../utils/id";
-import payment, { TypeResponsMidtrans } from "../utils/payment";
+import { EVENT_MODEL_NAME } from "./event.model.js";
+import { USER_MODEL_NAME } from "./user.model.js";
+import { TICKET_MODEL_NAME } from "./ticket.model.js";
+import { getId } from "../utils/id.js";
+import payment, { TypeResponsMidtrans } from "../utils/payment.js";
 
 export const ORDER_MODEL_NAME = "Order";
 

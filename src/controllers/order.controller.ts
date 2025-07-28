@@ -1,15 +1,15 @@
 import { Response } from "express";
-import { IReqUser } from "../utils/interfaces";
-import response from "../utils/response";
+import { IReqUser } from "../utils/interfaces.js";
+import response from "../utils/response.js";
 import OrderModel, {
   orderDTO,
   OrderStatus,
   TypeOrder,
   TypeVoucher,
-} from "../models/order.model";
-import TicketModel from "../models/ticket.model";
+} from "../models/order.model.js";
+import TicketModel from "../models/ticket.model.js";
 import { FilterQuery } from "mongoose";
-import { getId } from "../utils/id";
+import { getId } from "../utils/id.js";
 
 export default {
   async create(req: IReqUser, res: Response) {

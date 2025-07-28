@@ -1,7 +1,7 @@
 import { Response } from "express";
-import { IPaginationQuery, IReqUser } from "../utils/interfaces";
-import response from "../utils/response";
-import BannerModel, { bannerDTO, TypeBanner } from "../models/banner.model";
+import { IPaginationQuery, IReqUser } from "../utils/interfaces.js";
+import response from "../utils/response.js";
+import BannerModel, { bannerDTO, TypeBanner } from "../models/banner.model.js";
 import { FilterQuery, isValidObjectId } from "mongoose";
 
 export default {

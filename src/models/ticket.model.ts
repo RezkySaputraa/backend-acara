@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 import * as Yup from "yup";
-import { EVENT_MODEL_NAME } from "./event.model";
+import { EVENT_MODEL_NAME } from "./event.model.js";
 
 export const TICKET_MODEL_NAME = "Ticket";
 

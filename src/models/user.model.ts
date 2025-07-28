@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
-import { encrypt } from "../utils/encryption";
-import { renderMailHtml, sendmail } from "../utils/mail/mail";
-import { CLIENT_HOST, EMAIL_SMTP_USER } from "../utils/env";
-import { ROLES } from "../utils/constant";
+import { encrypt } from "../utils/encryption.js";
+import { renderMailHtml, sendmail } from "../utils/mail/mail.js";
+import { CLIENT_HOST, EMAIL_SMTP_USER } from "../utils/env.js";
+import { ROLES } from "../utils/constant.js";
 import * as Yup from "yup";
 
 const validatePassword = Yup.string()

@@ -1,7 +1,7 @@
 import { Response } from "express";
-import { IPaginationQuery, IReqUser } from "../utils/interfaces";
-import CategoryModel, { categoryDTO } from "../models/category.model";
-import response from "../utils/response";
+import { IPaginationQuery, IReqUser } from "../utils/interfaces.js";
+import CategoryModel, { categoryDTO } from "../models/category.model.js";
+import response from "../utils/response.js";
 import { isValidObjectId } from "mongoose";
 
 export default {

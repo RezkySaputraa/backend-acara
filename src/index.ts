@@ -1,9 +1,14 @@
 import express from "express";
-import router from "./routes/api";
-import db from "./utils/database";
-import docs from "./docs/route";
+import router from "./routes/api.js";
+import db from "./utils/database.js";
+import docs from "./docs/route.js";
 import cors from "cors";
-import path from "path";
+import path, { dirname } from "path";
+import { fileURLToPath } from "url";
+
+// ✅ Versi ESM-compatible __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 async function init() {
   try {

@@ -4,11 +4,11 @@ import UserModel, {
   userDTO,
   userLoginDTO,
   userUpdatePasswordDTO,
-} from "../models/user.model";
-import { encrypt } from "../utils/encryption";
-import { generateToken } from "../utils/jwt";
-import { IReqUser } from "../utils/interfaces";
-import response from "../utils/response";
+} from "../models/user.model.js";
+import { encrypt } from "../utils/encryption.js";
+import { generateToken } from "../utils/jwt.js";
+import { IReqUser } from "../utils/interfaces.js";
+import response from "../utils/response.js";
 
 export async function updateProfile(req: IReqUser, res: Response) {
   try {

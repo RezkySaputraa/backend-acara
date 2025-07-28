@@ -1,7 +1,7 @@
 import { Response } from "express";
-import { IPaginationQuery, IReqUser } from "../utils/interfaces";
-import response from "../utils/response";
-import TicketModel, { ticketDTO, TypeTicket } from "../models/ticket.model";
+import { IPaginationQuery, IReqUser } from "../utils/interfaces.js";
+import response from "../utils/response.js";
+import TicketModel, { ticketDTO, TypeTicket } from "../models/ticket.model.js";
 import { FilterQuery, isValidObjectId } from "mongoose";
 
 export default {

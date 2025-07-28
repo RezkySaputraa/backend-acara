@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
-import { SECRET } from "./env";
-import { IUserToken } from "./interfaces";
+import { SECRET } from "./env.js";
+import { IUserToken } from "./interfaces.js";
 
 export const generateToken = (user: IUserToken): string => {
   const token = jwt.sign(user, SECRET, {

@@ -1,7 +1,7 @@
 import { Response } from "express";
-import {  IReqUser } from "../utils/interfaces";
-import response from "../utils/response";
-import EventModel, { eventDTO, TypeEvent } from "../models/event.model";
+import {  IReqUser } from "../utils/interfaces.js";
+import response from "../utils/response.js";
+import EventModel, { eventDTO, TypeEvent } from "../models/event.model.js";
 import { FilterQuery, isValidObjectId } from "mongoose";
 
 export default {

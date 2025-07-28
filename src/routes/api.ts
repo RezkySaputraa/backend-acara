@@ -6,18 +6,18 @@ import {
   activation,
   updateProfile,
   updatePassword,
-} from "../controllers/auth.controller";
-import authMiddleware from "../middlewares/auth.middleware";
-import aclMiddleware from "../middlewares/acl.middleware";
-import { ROLES } from "../utils/constant";
-import mediaMiddleware from "../middlewares/media.middleware";
-import mediaController from "../controllers/media.controller";
-import categoryController from "../controllers/category.controller";
-import regionController from "../controllers/region.controller";
-import eventController from "../controllers/event.controller";
-import ticketController from "../controllers/ticket.controller";
-import bannerController from "../controllers/banner.controller";
-import orderController from "../controllers/order.controller";
+} from "../controllers/auth.controller.js";
+import authMiddleware from "../middlewares/auth.middleware.js";
+import aclMiddleware from "../middlewares/acl.middleware.js";
+import { ROLES } from "../utils/constant.js";
+import mediaMiddleware from "../middlewares/media.middleware.js";
+import mediaController from "../controllers/media.controller.js";
+import categoryController from "../controllers/category.controller.js";
+import regionController from "../controllers/region.controller.js";
+import eventController from "../controllers/event.controller.js";
+import ticketController from "../controllers/ticket.controller.js";
+import bannerController from "../controllers/banner.controller.js";
+import orderController from "../controllers/order.controller.js";
 
 const router = express.Router();
 
