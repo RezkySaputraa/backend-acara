@@ -1,8 +1,5 @@
 import axios from "axios";
-import {
-  MIDTRANS_SERVER_KEY,
-  MIDTRANS_TRANSACTION_URL,
-} from "../utils/env";
+import { MIDTRANS_SERVER_KEY, MIDTRANS_TRANSACTION_URL } from "../utils/env";
 
 export interface Payment {
   transaction_details: {

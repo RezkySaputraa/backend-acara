@@ -25,8 +25,8 @@ const doc = {
     },
     schemas: {
       LoginRequest: {
-        identifier: "erylrezky",
-        password: "123456",
+        identifier: "eryl2026",
+        password: "Eryl2026",
       },
       RegisterRequest: {
         fullName: "Eryl Rezky",
@@ -51,7 +51,7 @@ const doc = {
         startDate: "yyyy-mm-dd hh:mm:ss",
         endDate: "yyyy-mm-dd hh:mm:ss",
         location: {
-          region: 0,
+          region: 3273,
           coordinates: [0, 0],
           address: "",
         },
@@ -74,6 +74,11 @@ const doc = {
         events: "687f28f3e1ec19c495892a1a",
         description: "Ticket Reguler - description",
         quantity: 100,
+      },
+      CreateOrderRequest: {
+        events: "6883888a95641aa4b9a4bbf6",
+        ticket: "6884e8a8208cf2062f860daa",
+        quantity: 8,
       },
     },
   },

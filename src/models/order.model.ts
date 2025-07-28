@@ -63,11 +63,9 @@ const OrderSchema = new Schema<Order>(
     payment: {
       token: {
         type: Schema.Types.String,
-        required: true,
       },
       redirect_url: {
         type: Schema.Types.String,
-        required: true,
       },
     },
     status: {
