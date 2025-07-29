@@ -17,7 +17,12 @@ export default {
   async createLink(payload: Payment): Promise<TypeResponsMidtrans> {
     const result = await axios.post<TypeResponsMidtrans>(
       `${MIDTRANS_TRANSACTION_URL}`,
-      payload,
+      {
+        ...payload,
+        callback: {
+          finish: "https://frontend-acara-inky.vercel.app/payment/success",
+        },
+      },
       {
         headers: {
           "Content-Type": "application/json",
